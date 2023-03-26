@@ -27,21 +27,23 @@ jobs:
 
       - name: Create EC2 instance
         id: create-ec2
-        uses: aws-actions/amazon-ec2-run-instances@v1
+        uses: aws-actions/javascript/ec2-run-instances@v1
         with:
           image-id: ${{ env.AMI_ID }}
           instance-type: ${{ env.INSTANCE_TYPE }}
           key-name: ${{ env.KEY_NAME }}
           security-group-ids: ${{ env.SECURITY_GROUP_ID }}
 
+
       - name: Get instance ID
         run: echo "::set-output name=instance_id::$(echo ${{ steps.create-ec2.outputs.instance_id }})"
 
       - name: Wait for instance to be running
-        uses: aws-actions/amazon-ec2-wait-for-instance-status@v1
+        uses: aws-actions/javascript/ec2-wait-for-instance-status@v1
         with:
-          instance-id: ${{ steps.create-ec2.outputs.instance_id }}
+          instance-id: ${{ steps.create-ec2.outputs.instance-id }}
           status: running
+
 
       - name: Get instance IP address
         id: get-ip

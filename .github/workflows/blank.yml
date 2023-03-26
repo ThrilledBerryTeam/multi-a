@@ -6,10 +6,10 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  INSTANCE_TYPE: t2.micro
+  INSTANCE_TYPE: t2.large
   AMI_ID: ami-0c55b159cbfafe1f0
-  KEY_NAME: my-aws-key
-  SECURITY_GROUP_ID: sg-0123456789abcdef
+  KEY_NAME: minikube
+  SECURITY_GROUP_ID: sg-025a4776cef17c157
   SCRIPT_NAME: install-minikube.sh
 
 jobs:
